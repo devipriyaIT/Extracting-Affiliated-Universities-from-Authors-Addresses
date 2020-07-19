@@ -1,0 +1,64 @@
+<html>
+
+<head>
+    <title>Fynder</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+</head>
+<script>
+    function slice_text(){
+    var mail =  document.getElementById("mail").value; 
+    var sliced_mail = mail.substring(
+        mail.lastIndexOf("@") +1,
+        mail.lastIndexOf(".")
+    );
+
+    var sliced_mail= sliced_mail + " " + "college";
+    console.log(sliced_mail)
+}
+</script>
+<body
+    style="background: linear-gradient(90deg, rgba(255,81,81,1) 0%, rgba(255,163,13,1) 35%, rgba(255,254,159,1) 100%);">
+    <h1>FynDer</h1>
+    <div style="display: flex; justify-content: center; align-items: center; height: 100vh;">
+       
+        <div>
+            <h5 style="text-align: center; color: white; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
+                ENTER YOUR COLLEGE MAIL ID TO GET THE COLLEGE NAME
+            </h5>
+            <div class="form-group">
+                <form method="post" action="/get_college_details" enctype="multipart/form-data">
+                <input type="email" class="form-control" id="mail" name="mail" style="width: 600px; border-radius: 19px; border: 2px solid #117a8b;">
+                <br>
+            <center>    <button type="Search"  class="btn btn-primary" onclick="slice_text()">Search</button> </center>
+        </form>
+<form method="post" action="/get_author_details" enctype="multipart/form-data">
+    <h5 style="text-align: center; color: white; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
+        ENTER THE AUTHOR NAME TO GET THE BOOKS LINK
+    </h5>
+    <input type="text" class="form-control" id="author" name="author" style="width: 600px; border-radius: 19px; border: 2px solid #117a8b;">
+    <br>
+    <center>    <button type="Search"  class="btn btn-primary" onclick="slice_text()">Search</button> </center>
+</form>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="disp-details" style="    margin-top: -184px; margin-left: 191px; border: 1px solid white; width: fit-content;    max-height: max-content; background-color: white; font-weight: bolder;">
+        {{data}}
+    </div>
+    <div>
+        <a href="">
+        {{book_url}}
+    </a>
+    </div>
+
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<script src="script.js"></script>
+</html>
