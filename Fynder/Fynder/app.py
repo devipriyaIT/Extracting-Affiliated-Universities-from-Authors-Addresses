@@ -46,7 +46,7 @@ def author_books():
     link = ""
     for i in search(text,tld="co.in",num=1,stop=1,pause=2):
       link = i
-    return render_template("index.html",book_url = link)
+    return render_template("index.html",book_url = link[0])
 
 if __name__ == '__main__':
         app.run(host="127.0.0.1",debug=True)   
