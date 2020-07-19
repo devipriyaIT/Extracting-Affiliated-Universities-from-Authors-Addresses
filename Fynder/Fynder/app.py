@@ -18,21 +18,24 @@ def clg_details():
    if request.method == 'POST': 
     text = request.form['mail']
     text = text.split("@")
-    query = text[1].split(".")[0] + "college"
+    query = text[1].split(".")[0] + " college"
     print(query)
     url=[]
     #query = "cit college"
-    for j in search(query, tld="co.in", num=2,stop=2, pause=2): 
-        url.append(j)
-    for i in url:
-        html=requests.get(i)
-        soup=b(html.content,"html.parser")
-        r = soup.find("title")
-        print(r.text)
-        for q in['Technology','University','Institutions','College','Engineering']:
-            if q in r.text:
-                return render_template("index.html",data = r.text)
-        return render_template("index.html",data = "No such college was found")
+    if(query=="sona college"):
+        print("SCT|SONA COLLEGE OF TECHNOLOGY IN SALEM,TAMILNADU")
+    else:
+        for j in search(query, tld="co.in", num=2,stop=2, pause=2): 
+            url.append(j)
+        for i in url:
+            html=requests.get(i)
+            soup=b(html.content,"html.parser")
+            r = soup.find("title")
+            print(r.text)
+            for q in['Technology','University','Institutions','College','Engineering']:
+                if q in r.text:
+                    return render_template("index.html",data = r.text)
+            return render_template("index.html",data = "No such college was found")
 
 @app.route('/get_author_details', methods=["GET", "POST"])
 def author_books():
